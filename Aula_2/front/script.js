@@ -33,7 +33,7 @@ async function getContacts(e) {
 }
 
 document.getElementById('registrationForm').addEventListener('submit', async function(event) {
-  event.preventDefault(); // Impede o envio padrão do formulário
+  event.preventDefault(); 
 
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;

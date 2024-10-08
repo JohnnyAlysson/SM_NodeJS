@@ -1,0 +1,281 @@
+/* Global Styles */
+:root {
+    --bg-color: #1a1b26;
+    --card-bg: #24283b;
+    --input-bg: #414868;
+    --text-color: #a9b1d6;
+    --accent-color: #bb9af7;
+    --button-hover: #9d7cd8;
+    --task-item-bg: #2f3549;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition:  ease-in-out 0.3s;
+  }
+
+  a{
+    text-decoration: none;
+    color: black;
+    background-color: #828cb7;
+    border-radius: 10px;
+    align-self: center;
+    padding: 5px;
+  }
+  a:hover{
+    background-color: #cbd2f4;
+    
+  }
+
+  /* Style all input fields */
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+
+/* Style the submit button */
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* Style the container for inputs */
+.container {
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+/* The message box is shown when the user clicks on the password field */
+#message {
+  display:none;
+  background: #f1f1f1;
+  color: #000;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+#message p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "✖";
+}
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  .container {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 24px;
+  }
+  
+  /* Form Styles */
+  .form-group {
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-container{
+    display: flex;
+    flex-direction: column; 
+    gap: 0.5rem;
+
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-size: 14px;
+  }
+  
+  input[type="text"]::placeholder,
+  input[type="email"]::placeholder,
+  input[type="password"]::placeholder {
+    color: var(--text-color);
+    opacity: 0.7;
+  }
+  
+  button {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+  }
+  
+  button:hover {
+    background-color: var(--button-hover);
+  }
+  
+  /* Task List Styles */
+  #taskList {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 1rem;
+  }
+  
+  #taskList li {
+    display: flex;
+    align-items: center;
+    background-color: var(--task-item-bg);
+    border-radius: 6px;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  #taskList li input[type="checkbox"] {
+    margin-right: 0.75rem;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--accent-color);
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  #taskList li input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--accent-color);
+    font-size: 14px;
+  }
+  
+  #taskList li span {
+    flex-grow: 1;
+    font-size: 14px;
+  }
+  
+  .deleteBTN {
+    background-color: transparent;
+    border: none;
+    color: var(--accent-color);
+    cursor: pointer;
+    padding: 0.25rem;
+    font-size: 18px;
+  }
+  
+  .deleteBTN:hover {
+    color: var(--button-hover);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 480px) {
+    .container {
+      width: 100%;
+      padding: 1.5rem;
+    }
+  }
+  
+  /* Additional Styles for Login and Register Pages */
+  .auth-links {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
+  .auth-links a {
+    color: var(--accent-color);
+    text-decoration: none;
+    margin: 0 0.5rem;
+    font-size: 14px;
+  }
+  
+  .auth-links a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Error Messages */
+  .error {
+    color: #ff7a93;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+  
+  /* Success Messages */
+  .success {
+    color: #9ece6a;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+  
+  /* Ensure all content stays within containers */
+  .container > * {
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+  
+  /* Style for the logout button */
+  #logoutBTN {
+    margin-top: 1rem;
+    background-color: var(--accent-color);
+  }
+  
+  #logoutBTN:hover {
+    background-color: var(--button-hover);
+  }

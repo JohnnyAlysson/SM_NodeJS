@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager</title>
+  <script src="https://kit.fontawesome.com/e817e6100b.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+  <div class="container">
+      <h1>Task Manager</h1>
+      <div class="form-group">
+          <label for="task">Tasks</label>
+          <input type="text" id="task" placeholder="Digite sua tarefa">
+      </div>
+      <button onclick="addTask()">+ add task</button>
+      <ul id="taskList">
+      </ul>
+      <button id="logoutBTN">Logout</button>
+  </div>
+  <script src="./js/taskManager.js"></script>
+</body>
+</html>
