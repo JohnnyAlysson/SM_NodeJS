@@ -1,0 +1,95 @@
+
+
+
+
+CREATE DATABASE escola;
+
+USE escola;
+
+CREATE TABLE professores(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	nome VARCHAR(100),
+    cpf CHAR(14)
+);
+
+CREATE TABLE turmas(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(10),
+    id_professor INT,
+    FOREIGN KEY (id_professor) REFERENCES professores(id)
+);
+
+
+INSERT INTO professores (nome, cpf) VALUES 
+	("Abel", "023.568.965.22"),
+    ("João", "023.568.965.93"),
+    ("Maria", "023.568.965.57");
+
+INSERT INTO turmas (nome, id_professor) VALUES
+	("616SM", 1),
+    ("310DFS", 3);
+    
+    
+SELECT * FROM turmas;
+
+
+
+CREATE DATABASE locadora;
+
+USE locadora;
+
+CREATE TABLE filmes(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	titulo VARCHAR(100),
+    genero VARCHAR(100),
+    preco float,
+    faixa_etaria VARCHAR(5),
+    status_aluguel boolean
+);
+
+CREATE TABLE clientes(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(10),
+	cpf CHAR(11),
+    telefone CHAR(10),
+    idade year
+);
+
+create table alugueis(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    data_aluguel date,
+    id_filme int,
+	id_cliente int,
+    FOREIGN KEY (id_filme) REFERENCES filmes(id),
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id)
+    
+);
+
+-- Inserindo dados na tabela filmes
+INSERT INTO filmes (titulo, genero, preco, faixa_etaria, status_aluguel) VALUES
+('O Poderoso Chefão', 'Drama', 5.99, '18', true),
+('Jurassic Park', 'Aventura', 4.99, '12', false),
+('Frozen', 'Animação', 3.99, 'L', true),
+('Matrix', 'Ficção Científica', 4.99, '14', true),
+('Pulp Fiction', 'Crime', 5.99, '18', false);
+
+-- Inserindo dados na tabela clientes
+INSERT INTO clientes (nome, cpf, telefone, idade) VALUES
+('João', '12345678901', '1234567890', 1985),
+('Maria', '23456789012', '2345678901', 1990),
+('Pedro', '34567890123', '3456789012', 1978),
+('Ana', '45678901234', '4567890123', 2000),
+('Carlos', '56789012345', '5678901234', 1995);
+
+-- Inserindo dados na tabela alugueis
+INSERT INTO alugueis (data_aluguel, id_filme, id_cliente) VALUES
+('2024-10-01', 1, 2),
+('2024-10-02', 3, 1),
+('2024-10-03', 4, 5),
+('2024-10-04', 2, 3),
+('2024-10-05', 5, 4);
+    
+    
+SELECT * FROM filmes;
+SELECT * FROM clientes;
+SELECT * FROM alugueis;

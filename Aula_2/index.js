@@ -21,10 +21,10 @@ app.get('/users', async (req, res) => {
 app.post('/users', async(req,res) =>{ 
   const {email, password} = req.body;
 
-  
+
 
   try{
-    const consulta = 'INSERT INTO usuarios (email,senha) VALUES ( ? , ? )' ;
+    const consulta = 'INSERT INTO usuarios (email, senha) VALUES ( ? , ? )' ;
 
     await pool.query(consulta,[email,password]);
 
@@ -38,4 +38,4 @@ app.post('/users', async(req,res) =>{
 
 app.listen(PORT, () => {
   console.log('DEU BOM');
-});
+});                  

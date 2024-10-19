@@ -1,0 +1,25 @@
+CREATE DATABASE stock;
+
+use stock;
+
+CREATE TABLE product(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR (100),
+  preco FLOAT,
+  qtde INT
+);
+
+CREATE TABLE client(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR (100),
+  cpf CHAR(14) NOT NULL UNIQUE
+);
+
+CREATE TABLE invoice(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  sell_data DATE,
+  id_product INT,
+   FOREIGN KEY (id_product) REFERENCES product(id)
+  id_client INT
+   FOREIGN KEY (id_client) REFERENCES client(id)
+)
