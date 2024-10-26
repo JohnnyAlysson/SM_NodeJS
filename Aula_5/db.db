@@ -1,0 +1,86 @@
+CREATE DATABASE barbearia;
+
+use barbearia;
+
+CREATE TABLE funcionarios(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR (100),
+  cpf CHAR(11) NOT NULL UNIQUE,
+  especialidade VARCHAR(100),
+  salario FLOAT
+)
+
+
+CREATE TABLE clientes(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR (100),
+  cpf CHAR(11) NOT NULL UNIQUE
+);
+
+CREATE TABLE servicos(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR (100) , 
+  preco FLOAT
+)
+
+CREATE TABLE produtos(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR (100) , 
+  preco FLOAT,
+  qtde INT
+);
+
+CREATE TABLE vendas_produtos(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  data DATETIME,
+  id_cliente INT,
+  FOREIGN KEY (id_cliente) REFERENCES clientes(id),
+  id_produto INT,
+  FOREIGN KEY (id_produto) REFERENCES produtos(id)
+)
+
+CREATE TABLE vendas_servicos(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  data DATE,
+  id_cliente INT,
+  FOREIGN KEY (id_cliente) REFERENCES clientes(id),
+  id_servico INT,
+  FOREIGN KEY (id_servico) REFERENCES servicos(id),
+  id_funcinario INT,
+  FOREIGN KEY (id_funcinario) REFERENCES funcinarios(id)
+)
+
+
+-- Insert data for funcionarios table
+INSERT INTO funcionarios (nome, cpf, especialidade, salario) VALUES
+('João Silva', '12345678901', 'Cabeleireiro', 2500.00),
+('Maria Oliveira', '23456789012', 'Barbeiro', 2700.00),
+('Carlos Pereira', '34567890123', 'Colorista', 3000.00),
+('Ana Souza', '45678901234', 'Barbeiro', 2600.00),
+('Pedro Santos', '56789012345', 'Cabeleireiro', 2800.00);
+
+-- Insert data for clientes table
+INSERT INTO clientes (nome, cpf) VALUES
+('Lucas Lima', '67890123456'),
+('Fernanda Costa', '78901234567'),
+('Rafael Mendes', '89012345678'),
+('Bianca Rocha', '90123456789'),
+('Gabriel Nunes', '01234567890');
+
+-- Insert data for servicos table
+INSERT INTO servicos (nome, preco) VALUES
+('Corte Masculino', 50.00),
+('Corte Feminino', 60.00),
+('Coloração', 150.00),
+('Barba', 30.00),
+('Alisamento', 200.00);
+
+-- Insert data for produtos table
+INSERT INTO produtos (nome, preco, qtde) VALUES
+('Shampoo', 25.00, 50),
+('Condicionador', 30.00, 40),
+('Gel', 15.00, 30),
+('Pomada', 20.00, 25),
+('Cera', 18.00, 35);
+
+postgresql
