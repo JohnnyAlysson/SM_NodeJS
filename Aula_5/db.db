@@ -8,7 +8,7 @@ CREATE TABLE funcionarios(
   cpf CHAR(11) NOT NULL UNIQUE,
   especialidade VARCHAR(100),
   salario FLOAT
-)
+);
 
 
 CREATE TABLE clientes(
@@ -21,7 +21,7 @@ CREATE TABLE servicos(
   id INT AUTO_INCREMENT PRIMARY KEY,
   nome VARCHAR (100) , 
   preco FLOAT
-)
+);
 
 CREATE TABLE produtos(
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -37,7 +37,7 @@ CREATE TABLE vendas_produtos(
   FOREIGN KEY (id_cliente) REFERENCES clientes(id),
   id_produto INT,
   FOREIGN KEY (id_produto) REFERENCES produtos(id)
-)
+);
 
 CREATE TABLE vendas_servicos(
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -47,8 +47,8 @@ CREATE TABLE vendas_servicos(
   id_servico INT,
   FOREIGN KEY (id_servico) REFERENCES servicos(id),
   id_funcinario INT,
-  FOREIGN KEY (id_funcinario) REFERENCES funcinarios(id)
-)
+  FOREIGN KEY (id_funcionario) REFERENCES funcionarios(id)
+);
 
 
 -- Insert data for funcionarios table
@@ -83,4 +83,4 @@ INSERT INTO produtos (nome, preco, qtde) VALUES
 ('Pomada', 20.00, 25),
 ('Cera', 18.00, 35);
 
-postgresql
+-- postgresql
