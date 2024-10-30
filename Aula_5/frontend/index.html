@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema Barbearia</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="sidebar">
+      <h2>Barbearia</h2>
+      <nav>
+        <ul>
+          <li>
+            <a href="#" data-section="dashboard" class="active"
+              ><i class="fas fa-chart-line"></i> Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="#" data-section="clientes"
+              ><i class="fas fa-users"></i> Clientes</a
+            >
+          </li>
+          <li>
+            <a href="#" data-section="funcionarios"
+              ><i class="fas fa-user-tie"></i> Funcionários</a
+            >
+          </li>
+          <li>
+            <a href="#" data-section="servicos"
+              ><i class="fas fa-cut"></i> Serviços</a
+            >
+          </li>
+          <li>
+            <a href="#" data-section="produtos"
+              ><i class="fas fa-shopping-bag"></i> Produtos</a
+            >
+          </li>
+          <li>
+            <a href="#" data-section="vendas"
+              ><i class="fas fa-dollar-sign"></i> Vendas</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <main class="content">
+      <header>
+        <div class="header-content">
+          <h1 id="page-title">Dashboard</h1>
+          <div class="user-info">
+            <span>Bem-vindo</span>
+            <i class="fas fa-user-circle"></i>
+          </div>
+        </div>
+      </header>
+
+      <div class="container">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section active">
+          <div class="dashboard-cards">
+            <div class="card">
+              <h3>Total de Clientes</h3>
+              <p id="total-clientes">Carregando...</p>
+            </div>
+            <div class="card">
+              <h3>Vendas Hoje</h3>
+              <p id="vendas-hoje">Carregando...</p>
+            </div>
+            <div class="card">
+              <h3>Produtos Baixo Estoque</h3>
+              <p id="produtos-baixos">Carregando...</p>
+            </div>
+          </div>
+          <div class="dashboard-tables">
+            <div class="table-container">
+              <h3>Produtos Mais Vendidos</h3>
+              <div id="produtos-mais-vendidos"></div>
+            </div>
+            <div class="table-container">
+              <h3>Serviços Mais Vendidos</h3>
+              <div id="servicos-mais-vendidos"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Clientes Section -->
+        <section id="clientes" class="section">
+          <div class="actions">
+            <button class="btn-add" onclick="showModal('cliente')">
+              <i class="fas fa-plus"></i> Novo Cliente
+            </button>
+          </div>
+          <div class="table-responsive" id="clientes-table"></div>
+        </section>
+
+        <!-- Modal for Clients -->
+        <div id="modal-cliente" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Novo Cliente</h2>
+            <form id="form-cliente">
+              <div class="form-group">
+                <label for="cliente-nome">Nome</label>
+                <input type="text" id="cliente-nome" required />
+              </div>
+              <div class="form-group">
+                <label for="cliente-cpf">CPF</label>
+                <input type="text" id="cliente-cpf" maxlength="11" required />
+              </div>
+              <button type="submit" class="btn-save">Salvar</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Funcionários Section -->
+        <section id="funcionarios" class="section">
+          <div class="actions">
+            <button class="btn-add" onclick="showModal('funcionario')">
+              <i class="fas fa-plus"></i> Novo Funcionário
+            </button>
+          </div>
+          <div class="table-responsive" id="funcionarios-table"></div>
+        </section>
+
+        <!-- Modal for Funcionários -->
+        <div id="modal-funcionario" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="closeModal('funcionario')"
+              >&times;</span
+            >
+            <h2>Novo Funcionário</h2>
+            <form id="form-funcionario">
+              <div class="form-group">
+                <label for="funcionario-nome">Nome</label>
+                <input type="text" id="funcionario-nome" required />
+              </div>
+              <div class="form-group">
+                <label for="funcionario-cpf">CPF</label>
+                <input
+                  type="text"
+                  id="funcionario-cpf"
+                  maxlength="11"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="funcionario-especialidade">Especialidade</label>
+                <input type="text" id="funcionario-especialidade" required />
+              </div>
+              <div class="form-group">
+                <label for="funcionario-salario">Salário</label>
+                <input
+                  type="number"
+                  id="funcionario-salario"
+                  step="0.01"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn-save">Salvar</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Produtos Section -->
+        <section id="produtos" class="section">
+          <div class="actions">
+            <button class="btn-add" onclick="showModal('produto')">
+              <i class="fas fa-plus"></i> Novo Produto
+            </button>
+          </div>
+          <div class="table-responsive" id="produtos-table"></div>
+        </section>
+
+        <!-- Modal for Produtos -->
+        <div id="modal-produto" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="closeModal('produto')">&times;</span>
+            <h2>Novo Produto</h2>
+            <form id="form-produto">
+              <div class="form-group">
+                <label for="produto-nome">Nome</label>
+                <input type="text" id="produto-nome" required />
+              </div>
+              <div class="form-group">
+                <label for="produto-preco">Preço</label>
+                <input type="number" id="produto-preco" step="0.01" required />
+              </div>
+              <div class="form-group">
+                <label for="produto-qtde">Quantidade</label>
+                <input type="number" id="produto-qtde" required />
+              </div>
+              <button type="submit" class="btn-save">Salvar</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Serviços Section -->
+        <section id="servicos" class="section">
+          <div class="actions">
+            <button class="btn-add" onclick="showModal('servico')">
+              <i class="fas fa-plus"></i> Novo Serviço
+            </button>
+          </div>
+          <div class="table-responsive" id="servicos-table"></div>
+        </section>
+
+        <!-- Modal for Serviços -->
+        <div id="modal-servico" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="closeModal('servico')">&times;</span>
+            <h2>Novo Serviço</h2>
+            <form id="form-servico">
+              <div class="form-group">
+                <label for="servico-nome">Nome</label>
+                <input type="text" id="servico-nome" required />
+              </div>
+              <div class="form-group">
+                <label for="servico-preco">Preço</label>
+                <input type="number" id="servico-preco" step="0.01" required />
+              </div>
+              <button type="submit" class="btn-save">Salvar</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Vendas Section -->
+        <section id="vendas" class="section">
+          <div class="actions">
+            <button class="btn-add" onclick="iniciarVendaProduto()">
+              <i class="fas fa-plus"></i> Nova Venda de Produto
+            </button>
+            <button class="btn-add" onclick="iniciarVendaServico()">
+              <i class="fas fa-plus"></i> Nova Venda de Serviço
+            </button>
+          </div>
+          <div class="dashboard-tables">
+            <div id="vendas-produtos-table" class="table-container"></div>
+            <div id="vendas-servicos-table" class="table-container"></div>
+          </div>
+        </section>
+
+        <!-- Modal for Venda de Produto -->
+        <div id="modal-vendas_produtos" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="closeModal('vendas_produtos')"
+              >&times;</span
+            >
+            <h2>Nova Venda de Produto</h2>
+            <form id="form-vendas_produtos">
+              <div class="form-group">
+                <label for="vendas_produtos-cliente">Cliente</label>
+                <select id="vendas_produtos-cliente" required></select>
+              </div>
+              <div class="form-group">
+                <label for="vendas_produtos-produto">Produto</label>
+                <select id="vendas_produtos-produto" required></select>
+              </div>
+              <button type="submit" class="btn-save">Realizar Venda</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Modal for Venda de Serviço -->
+        <div id="modal-vendas_servicos" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="closeModal('vendas_servicos')"
+              >&times;</span
+            >
+            <h2>Nova Venda de Serviço</h2>
+            <form id="form-vendas_servicos">
+              <div class="form-group">
+                <label for="vendas_servicos-cliente">Cliente</label>
+                <select id="vendas_servicos-cliente" required></select>
+              </div>
+              <div class="form-group">
+                <label for="vendas_servicos-servico">Serviço</label>
+                <select id="vendas_servicos-servico" required></select>
+              </div>
+              <div class="form-group">
+                <label for="vendas_servicos-funcionario">Funcionário</label>
+                <select id="vendas_servicos-funcionario" required></select>
+              </div>
+              <button type="submit" class="btn-save">Realizar Venda</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="toast" class="toast"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
