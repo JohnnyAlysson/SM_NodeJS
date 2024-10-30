@@ -41,7 +41,7 @@ CREATE TABLE vendas_produtos(
 
 CREATE TABLE vendas_servicos(
   id INT AUTO_INCREMENT PRIMARY KEY,
-  data DATE,
+  data DATETIME,
   id_cliente INT,
   FOREIGN KEY (id_cliente) REFERENCES clientes(id),
   id_servico INT,
@@ -84,3 +84,15 @@ INSERT INTO produtos (nome, preco, qtde) VALUES
 ('Cera', 18.00, 35);
 
 -- postgresql
+
+-- For vendas_produtos table:
+INSERT INTO vendas_produtos (data, id_cliente, id_produto) VALUES
+('2024-10-29 14:30:00', 1, 101),
+('2024-10-29 15:45:00', 2, 103),
+('2024-10-29 16:20:00', 3, 102);
+
+-- For vendas_servicos table:
+INSERT INTO vendas_servicos (data, id_cliente, id_servico, id_funcinario) VALUES
+('2024-10-29 09:00:00', 1, 201, 301),
+('2024-10-29 10:30:00', 2, 203, 302),
+('2024-10-29 11:15:00', 3, 202, 303);
